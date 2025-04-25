@@ -1,0 +1,201 @@
+#root {
+  margin: 0 auto;
+  text-align: center;
+  padding: 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+  flex-grow: 1;
+}
+
+.app-logo {
+  width: 100vw;
+  max-height: 300px;
+  object-fit: cover;
+  object-position: center;
+  margin: 0;
+  padding: 0;
+  max-height: 250px;
+}
+
+.card {
+  padding: 10px;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.feature-section {
+  width: 50%;
+  margin-top: 2rem;
+  padding: 20px;
+  border: 3px solid #cef6c4;
+  border-radius: 10px;
+}
+
+.feature-section h2 {
+  margin-top: 0;
+  color: #2e7d32;
+}
+
+input[type="text"],
+input[type="file"] {
+  padding: 10px;
+  margin-right: 0.5em;
+  border-radius: 4px;
+  border: 3px solid #cef6c4;
+  background-color: #fff;
+  color: #333;
+}
+
+input[type="text"]:focus {
+  outline: 2px solid #646cff;
+  border-color: transparent;
+}
+
+button:disabled {
+  background-color: #e0e0e0;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.results-section {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: left;
+  color: #333;
+}
+
+.results-section h3 {
+  margin-top: 0;
+  color: #1976d2;
+}
+
+.error-message {
+  color: #d32f2f;
+  margin-top: 1rem;
+}
+
+.feature-section {
+  width: 60%;
+  max-width: 800px;
+  margin: 2rem auto;
+  border: 2px solid #a3e6b4;
+  /* Light green border */
+  border-radius: 8px;
+  padding: 2rem;
+  margin-top: 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.feature-section h2 {
+  color: #2e7d32;
+  /* Dark green */
+  margin-bottom: 1.5rem;
+}
+
+.feature-section form {
+  display: flex;
+  /* Use flexbox for alignment */
+  justify-content: center;
+  /* Center items horizontally */
+  align-items: center;
+  /* Align items vertically */
+  gap: 0.5rem;
+  /* Space between items */
+  margin-top: 1rem;
+  /* Add space above the form */
+}
+
+/* Style for input fields */
+.feature-section input[type="text"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  flex-grow: 1;
+  /* Allow input to take available space */
+  max-width: 300px;
+  /* Optional: Limit max width */
+}
+
+/* Style for the select dropdown */
+.feature-section select {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: white;
+  /* Ensure background is white */
+  margin-bottom: 1rem;
+  /* Add space below the dropdown */
+  min-width: 150px;
+  /* Give it some minimum width */
+  /* Add any other styles needed to match the input, e.g., font-family */
+}
+
+/* Style for buttons */
+.feature-section button {
+  padding: 0.75rem 1.5rem;
+  background-color: #4caf50;
+  /* Green background */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.feature-section button:hover {
+  background-color: #388e3c;
+  /* Darker green on hover */
+}
+
+.feature-section button:disabled {
+  background-color: #a5d6a7;
+  /* Lighter green when disabled */
+  cursor: not-allowed;
+}
+
+.results-section {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: left;
+  color: #333;
+}
+
+.results-section h3 {
+  margin-top: 0;
+  color: #1976d2;
+}
+
+.error-message {
+  color: #d32f2f;
+  margin-top: 1rem;
+}
+
+.feature-section {
+  width: 60%;
+  max-width: 800px;
+  margin: 2rem auto;
+}
