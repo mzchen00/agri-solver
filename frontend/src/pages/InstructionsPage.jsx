@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../App.css'; // Reuse existing styles for now
+import '../App.css'; 
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 
 
@@ -9,24 +9,19 @@ function InstructionsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const [country, setCountry] = useState('Australia'); // Keep state for country
+  const [country, setCountry] = useState('Australia'); 
 
   const fetchInstructions = async () => {
     if (!plantName.trim()) {
       setError('Please enter a plant name.');
       return;
     }
-    // Add check for country if needed
-    // if (!country) {
-    //   setError('Please select a country.');
-    //   return;
-    // }
+
     setIsLoading(true);
     setError(null);
     setInstructions(null);
 
     try {
-      // Include country as a query parameter
       const apiUrl = `http://localhost:3001/api/instructions/${encodeURIComponent(plantName.trim())}?country=${encodeURIComponent(country)}`;
       const response = await fetch(apiUrl);
 
@@ -76,7 +71,6 @@ function InstructionsPage() {
     <div className="feature-section">
 
       <h2>Get Plant Instructions</h2>
-      {/* Ensure CountryDropdown is rendered before the form */}
       <CountryDropdown value={country} onChange={onChangeCountry} />
 
       <form onSubmit={handleSubmit}>
