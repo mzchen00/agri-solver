@@ -14,7 +14,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // --- API Routes ---
 
-// Updated endpoint for getting plant instructions
 app.get("/api/instructions/:plantName", async (req, res) => {
     const { plantName } = req.params;
     const { country } = req.query; // Get country from query parameters
@@ -27,7 +26,7 @@ app.get("/api/instructions/:plantName", async (req, res) => {
     }
 
     const lowerCasePlantName = plantName.toLowerCase();
-    const lowerCaseCountry = country.toLowerCase(); // Normalize country for consistency
+    const lowerCaseCountry = country.toLowerCase();
 
     console.log(
         `Received request for instructions for: ${plantName} in ${country}`
@@ -55,7 +54,7 @@ app.get("/api/instructions/:plantName", async (req, res) => {
                 );
                 res.json({
                     plantName: plantName,
-                    country: country, // Optionally return country
+                    country: country,
                     instructions: row.instructions_text,
                     source: "cache",
                 });
@@ -74,11 +73,10 @@ app.get("/api/instructions/:plantName", async (req, res) => {
                     const perplexityUrl =
                         "https://api.perplexity.ai/chat/completions";
 
-                    // Modify the prompt to include the country context
-                    const prompt = `Provide concise step-by-step growing and planting instructions for ${plantName}${country}. Focus on key actions like soil preparation, planting depth, spacing, watering, sunlight needs, and basic fertilization suitable for that region if specified.`;
-                    const systemPrompt = `You are an AI assistant,reply in the ${country}'s unique language`;
+                    const prompt = `Use ${country}'s language in response. Provide concise step-by-step growing and planting instructions for ${plantName}${country}. Focus on key actions like soil preparation, planting depth, spacing, watering, sunlight needs, and basic fertilization suitable for that region if specified.`;
+                    const systemPrompt = `You are an AI assistant,reply in the ${country}'s language`;
 
-                    console.log("Using prompt:", prompt); // Log the prompt being sent
+                    console.log("Using prompt:", prompt);
                     console.log("Using System prompt:", systemPrompt);
                     const response = await axios.post(
                         perplexityUrl,
@@ -154,10 +152,9 @@ app.get("/api/instructions/:plantName", async (req, res) => {
                                     "Database insert error:",
                                     insertErr.message
                                 );
-                                // Send combined text even if caching fails
                                 res.json({
                                     plantName: plantName,
-                                    country: country, // Optionally return country
+                                    country: country,
                                     instructions: combinedText,
                                     source: "api",
                                     cacheError: true,
@@ -197,12 +194,10 @@ app.get("/api/instructions/:plantName", async (req, res) => {
     );
 });
 
-// Basic root route
 app.get("/", (req, res) => {
     res.send("AgriSolver Backend is running!");
 });
 
-// Start the server
 app.listen(port, () => {
     console.log(`Backend server listening on http://localhost:${port}`);
 });

@@ -130,31 +130,22 @@ button:disabled {
   border-radius: 4px;
   font-size: 1rem;
   flex-grow: 1;
-  /* Allow input to take available space */
   max-width: 300px;
-  /* Optional: Limit max width */
 }
 
-/* Style for the select dropdown */
 .feature-section select {
   padding: 0.75rem 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
   background-color: white;
-  /* Ensure background is white */
   margin-bottom: 1rem;
-  /* Add space below the dropdown */
   min-width: 150px;
-  /* Give it some minimum width */
-  /* Add any other styles needed to match the input, e.g., font-family */
 }
 
-/* Style for buttons */
 .feature-section button {
   padding: 0.75rem 1.5rem;
   background-color: #4caf50;
-  /* Green background */
   color: white;
   border: none;
   border-radius: 4px;
@@ -165,12 +156,10 @@ button:disabled {
 
 .feature-section button:hover {
   background-color: #388e3c;
-  /* Darker green on hover */
 }
 
 .feature-section button:disabled {
   background-color: #a5d6a7;
-  /* Lighter green when disabled */
   cursor: not-allowed;
 }
 
@@ -187,6 +176,13 @@ button:disabled {
 .results-section h3 {
   margin-top: 0;
   color: #1976d2;
+}
+
+.results-section p {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .error-message {
