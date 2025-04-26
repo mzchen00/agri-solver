@@ -69,9 +69,9 @@ function InstructionsPage() {
 
   return (
     <div className="feature-section">
-
       <h2>Get Plant Instructions</h2>
-      <CountryDropdown value={country} onChange={onChangeCountry} />
+      <div > <CountryDropdown className="country-selection" value={country} onChange={onChangeCountry}/>
+      </div>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -91,7 +91,7 @@ function InstructionsPage() {
       {instructions && (
         <div className="results-section">
           <h3>Instructions for {plantName}:</h3>
-          <p style={{ whiteSpace: 'pre-wrap' }}>{instructions}</p>
+          <p >{instructions}</p>
         </div>
       )}
     </div>

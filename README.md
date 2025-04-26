@@ -40,8 +40,6 @@ AgriSolver is a lightweight web application designed to provide farmers with ess
 3.  Create a `.env` file in the `backend` directory and add your API keys:
     ```dotenv
     PERPLEXITY_API_KEY=your_perplexity_api_key
-    GEMINI_API_KEY=your_gemini_api_key
-    PORT=3001 # Optional: specify a port
     ```
 4.  Start the backend server for development: `npm run dev`. This will automatically create the `agrisolver.db` file if it doesn't exist.
 5.  Start the backend server for production: `npm start`

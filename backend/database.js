@@ -5,7 +5,6 @@ const db = new sqlite3.Database("./agrisolver.db", (err) => {
         console.error("Error opening database:", err.message);
     } else {
         console.log("Connected to the SQLite database.");
-        // Create the instructions table if it doesn't exist
         db.run(
             `CREATE TABLE IF NOT EXISTS instructions (
       id INTEGER PRIMARY KEY AUTOINCREMENT,

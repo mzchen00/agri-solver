@@ -2,28 +2,24 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const db = require("./database");
-const axios = require("axios"); // Import axios
+const axios = require("axios");
 
 const app = express();
 const port = 3001;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// --- API Routes ---
-
 app.get("/api/instructions/:plantName", async (req, res) => {
     const { plantName } = req.params;
-    const { country } = req.query; // Get country from query parameters
+    const { country } = req.query;
 
-    // Validate country input
-    if (!country) {
-        return res
-            .status(400)
-            .json({ error: "Country parameter is required." });
-    }
+    // if (!country) {
+    //     return res
+    //         .status(400)
+    //         .json({ error: "Country parameter is required." });
+    // }
 
     const lowerCasePlantName = plantName.toLowerCase();
     const lowerCaseCountry = country.toLowerCase();
@@ -32,15 +28,12 @@ app.get("/api/instructions/:plantName", async (req, res) => {
         `Received request for instructions for: ${plantName} in ${country}`
     );
 
-    // --- Database Check ---
-    // Updated SELECT query to include country
     const sqlSelect = `SELECT instructions_text FROM instructions WHERE plant_name = ? AND country = ?`;
 
     db.get(
         sqlSelect,
         [lowerCasePlantName, lowerCaseCountry],
         async (err, row) => {
-            // Use normalized values
             if (err) {
                 console.error("Database select error:", err.message);
                 return res
@@ -121,13 +114,10 @@ app.get("/api/instructions/:plantName", async (req, res) => {
                         });
                     }
 
-                    // Format citations into a string
                     let citationsText = "";
                     if (fetchedCitations.length > 0) {
                         citationsText = "\n\nSources:\n";
-                        // Correctly handle the array of URL strings
                         fetchedCitations.forEach((url) => {
-                            // Use the url directly
                             citationsText += `${url}\n`;
                         });
                     }
@@ -139,12 +129,10 @@ app.get("/api/instructions/:plantName", async (req, res) => {
                         `Successfully fetched instructions and citations for ${plantName} in ${country} from API.`
                     );
 
-                    // Store the combined text in the database WITH country
-                    // Updated INSERT query
                     const sqlInsert = `INSERT INTO instructions (plant_name, country, instructions_text) VALUES (?, ?, ?)`;
                     db.run(
                         sqlInsert,
-                        // Use normalized values and combined text
+
                         [lowerCasePlantName, lowerCaseCountry, combinedText],
                         (insertErr) => {
                             if (insertErr) {
@@ -178,7 +166,6 @@ app.get("/api/instructions/:plantName", async (req, res) => {
                         "Perplexity API call error:",
                         apiError.response?.data || apiError.message
                     );
-                    // Check for specific API key errors if possible
                     if (apiError.response?.status === 401) {
                         return res.status(401).json({
                             error: "API Authentication failed. Check API Key.",
