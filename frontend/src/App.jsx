@@ -13,6 +13,9 @@ function App() {
       <main>
         <Outlet />
       </main>
+      <footer>
+        <p>© 2025 AgriSolver. All rights reserved.</p>
+      </footer> 
     </>
   );
 }

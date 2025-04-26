@@ -12,7 +12,6 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<InstructionsPage />} />
-          {/* <Route path="diagnose" element={<DiagnosePage />} /> */}
           <Route path="history" element={<HistoryPage />} />
         </Route>
       </Routes>
